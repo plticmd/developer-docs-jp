@@ -375,6 +375,7 @@ const sidebars: SidebarsConfig = {
             },
             "sdks/legacy-ts-sdk/sdk-core-layer",
             "sdks/legacy-ts-sdk/sdk-plugins-layer",
+            "sdks/legacy-ts-sdk/sdk-plugins-layer-jp",
             "sdks/legacy-ts-sdk/sdk-tests",
           ],
         },
