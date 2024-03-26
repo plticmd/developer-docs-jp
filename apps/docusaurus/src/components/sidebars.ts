@@ -374,9 +374,32 @@ const sidebars: SidebarsConfig = {
               ],
             },
             "sdks/legacy-ts-sdk/sdk-core-layer",
-            "sdks/legacy-ts-sdk/sdk-plugins-layer",
-            "sdks/legacy-ts-sdk/sdk-plugins-layer-jp",
-            "sdks/legacy-ts-sdk/sdk-tests",
+            {
+              type: "category",
+              label: "Plugin Layer",
+              link: {
+                type: "doc",
+                id: "sdks/legacy-ts-sdk/sdk-plugins-layer",
+              },
+              collapsible: true,
+              collapsed: true,
+              items: [
+                "sdks/legacy-ts-sdk/sdk-plugins-layer-jp",
+              ],
+            },
+            {
+              type: "category",
+              label: "Tests and Validation",
+              link: {
+                type: "doc",
+                id: "sdks/legacy-ts-sdk/sdk-tests",
+              },
+              collapsible: true,
+              collapsed: true,
+              items: [
+                "sdks/legacy-ts-sdk/sdk-tests-jp",
+              ],
+            },
           ],
         },
         // Migrate these to proper folders when more info is there
