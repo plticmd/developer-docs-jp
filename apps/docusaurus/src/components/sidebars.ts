@@ -403,9 +403,47 @@ const sidebars: SidebarsConfig = {
           ],
         },
         // Migrate these to proper folders when more info is there
-        "sdks/python-sdk/index",
-        "sdks/rust-sdk/index",
-        "sdks/unity-sdk/index",
+        {
+          type: "category",
+          label: "Python SDK",
+          link: {
+            type: "doc",
+            id: "sdks/python-sdk/index",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "sdks/python-sdk/index-jp",
+          ],
+        },
+        
+        {
+          type: "category",
+          label: "Rust SDK",
+          link: {
+            type: "doc",
+            id: "sdks/rust-sdk/index",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "sdks/rust-sdk/index-jp",
+          ],
+        },
+       
+        {
+          type: "category",
+          label: "Unity SDK",
+          link: {
+            type: "doc",
+            id:  "sdks/unity-sdk/index",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "sdks/unity-sdk/index-jp",
+          ],
+        },
       ],
     },
     {
