@@ -684,5 +684,5 @@ console.log(`Bob's digital assets balance: ${bobDigitalAssetsAfter.length}`);
 
 - [Account basics](../concepts/accounts.md)
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
-- [Python SDK](../sdks/python-sdk/index.md)
+- [Python SDK](../sdks/python-sdk/index-jp.md)
 - [REST API specification](https://aptos.dev/nodes/aptos-api-spec#/)
