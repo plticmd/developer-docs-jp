@@ -17,7 +17,7 @@ This tutorial describes how to create and transfer non-fungible assets on the Ap
 Install your preferred SDK from the below list:
 
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
-- [Python SDK](../sdks/python-sdk/index.md)
+- [Python SDK](../sdks/python-sdk/index-jp.md)
 
 ---
 
