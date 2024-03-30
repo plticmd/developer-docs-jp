@@ -1,4 +1,5 @@
 # Developer Documentation
+pnpm start on (apps/docusaurus)
 
 - [Developer Documentation](#developer-documentation)
   - [Installation](#installation)
