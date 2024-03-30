@@ -35,12 +35,6 @@ BCSトランザクションを送信するためのe2eテストの例は、[`apt
 
 ベクトルアイテムは一目瞭然ですが、スペースを節約しデータのオーバーフローを回避するため、特別なシリアル化メソッドが使用されます。詳細は以下で解説します。
 
-- All account address are hex-coded.
-- `args` in EntryFunction is hex-coded.
-- U64 and U128 numbers are serialized as string literals to avoid data truncation.
-- U8 is serialized as a number (not a string).
-- `code` in Script and ModuleBundle are hex-coded.
-
 - すべてのアカウントアドレスは16進コード化されています。
 - エントリー関数の`args`(引数)は16進コード化されます。
 - U64、U128の数値は文字列リテラルとしてシリアル化され、データの切り捨てを回避します。
