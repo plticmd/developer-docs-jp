@@ -10,10 +10,10 @@ Use these Aptos software development kits (SDKs), in combination with the [Aptos
 
 - ### [TypeScript SDK](ts-sdk/index.md)
 
-- ### [Python SDK](python-sdk/index.md)
+- ### [Python SDK](python-sdk/index-jp.md)
 
-- ### [Rust SDK](rust-sdk/index.md)
+- ### [Rust SDK](rust-sdk/index-jp.md)
 
-- ### [Unity SDK](unity-sdk/index.md)
+- ### [Unity SDK](unity-sdk/index-jp.md)
 
 To get started, [develop with the Aptos SDKs](../tutorials/index.md) following our tutorials.
