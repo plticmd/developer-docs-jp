@@ -18,8 +18,8 @@ Make sure you have understood FA before moving on to the tutorial. If not, it is
 Install your preferred SDK from the below list:
 
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
-- [Python SDK](../sdks/python-sdk/index.md)
-- [Rust SDK](../sdks/rust-sdk/index.md)
+- [Python SDK](../sdks/python-sdk/index.md) [/ 日本語](../sdks/python-sdk/index-jp.md)
+- [Rust SDK](../sdks/rust-sdk/index.md) [/ 日本語](../sdks/rust-sdk/index-jp.md)
 
 ---
 
@@ -250,6 +250,6 @@ There are two separate withdraw and deposit events instead of a single transfer 
 - [Aptos CLI](../tools/aptos-cli/use-cli/use-aptos-cli.md)
 - [Fungible Asset](../standards/fungible-asset.md)
 - [TypeScript SDK](../sdks/ts-sdk/index.md)
-- [Python SDK](../sdks/python-sdk/index.md)
-- [Rust SDK](../sdks/rust-sdk/index.md)
+- [Python SDK](../sdks/python-sdk/index.md) [/ 日本語](../sdks/python-sdk/index-jp.md)
+- [Rust SDK](../sdks/rust-sdk/index.md) [/ 日本語](../sdks/rust-sdk/index-jp.md)
 - [REST API specification](https://aptos.dev/nodes/aptos-api-spec#/)
