@@ -1,6 +1,6 @@
 ---
-title: "Migrate to Transaction Stream Service"
-slug: "indexer-legacy-migration"
+title: "トランザクション ストリーム サービスへの移行(Japanese)"
+slug: "indexer-legacy-migration-jp"
 ---
 
 This guide contains information on how to migrate to using the Transaction Stream Service if you are currently running a legacy indexer.

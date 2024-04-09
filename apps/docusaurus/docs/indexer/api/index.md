@@ -1,5 +1,6 @@
 ---
 title: "Indexer API"
+slug: "indexer-api-index"
 ---
 
 import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';

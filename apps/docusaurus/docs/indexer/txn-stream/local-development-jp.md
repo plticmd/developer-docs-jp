@@ -1,9 +1,9 @@
 ---
-title: "Running Locally"
-slug: "indexer-txn-stream-local-development"
+title: "ローカルで実行する(Japanese)"
+slug: "indexer-txn-stream-local-development-jp"
 ---
 
-# Running the Transaction Stream Service Locally
+# トランザクション ストリーム サービスをローカルで実行する
 
 import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';
 

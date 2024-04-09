@@ -1,5 +1,7 @@
 ---
 title: "Learn about Indexing"
+slug: "indexer-indexer-landing"
+
 ---
 
 import BetaNotice from '../../src/components/\_indexer_beta_notice.mdx';

@@ -266,8 +266,27 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
-        "apis/fullnode-rest-api",
-        "apis/aptos-labs-developer-portal",
+        "apis/index-jp",
+        {
+          type: "category",
+          label: "Fullnode Rest API",
+          link: { type: "doc", id: "apis/fullnode-rest-api" },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "apis/fullnode-rest-api-jp",
+          ],
+        },
+        {
+          type: "category",
+          label: "Aptos Labs Developer Portal",
+          link: { type: "doc", id: "apis/aptos-labs-developer-portal" },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "apis/aptos-labs-developer-portal-jp"
+          ],
+        },
         {
           type: "category",
           label: "Indexing",
@@ -275,6 +294,7 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           link: { type: "doc", id: "indexer/indexer-landing" },
           items: [
+            "indexer/indexer-landing-jp",
             {
               type: "category",
               label: "Indexer API",
@@ -282,9 +302,37 @@ const sidebars: SidebarsConfig = {
               collapsible: true,
               collapsed: true,
               items: [
-                "indexer/api/labs-hosted",
-                "indexer/api/self-hosted",
-                "indexer/api/example-queries",
+                "indexer/api/index-jp",
+                {
+                  type: "category",
+                  label: "Labs Hosted",
+                  link: { type: "doc", id: "indexer/api/labs-hosted" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                    "indexer/api/labs-hosted-jp",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Self Hosted",
+                  link: { type: "doc", id: "indexer/api/self-hosted" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                    "indexer/api/self-hosted-jp",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Example Queries",
+                  link: { type: "doc", id: "indexer/api/example-queries" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                    "indexer/api/example-queries-jp"
+                  ],
+                },
               ],
             },
             {
@@ -294,8 +342,27 @@ const sidebars: SidebarsConfig = {
               collapsible: true,
               collapsed: true,
               items: [
-                "indexer/custom-processors/e2e-tutorial",
-                "indexer/custom-processors/parsing-txns",
+                "indexer/custom-processors/index-jp",
+                {
+                  type: "category",
+                  label: "End-to-End Tutorial",
+                  link: { type: "doc", id: "indexer/custom-processors/e2e-tutorial" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                     "indexer/custom-processors/e2e-tutorial-jp",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Parcing Transactions",
+                  link: { type: "doc", id: "indexer/custom-processors/parsing-txns" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                     "indexer/custom-processors/parsing-txns-jp",
+                  ],
+                },
               ],
             },
             {
@@ -305,9 +372,37 @@ const sidebars: SidebarsConfig = {
               collapsible: true,
               collapsed: true,
               items: [
-                "indexer/txn-stream/labs-hosted",
-                "indexer/txn-stream/self-hosted",
-                "indexer/txn-stream/local-development",
+                "indexer/txn-stream/index-jp",
+                {
+                  type: "category",
+                  label: "Labs-Hosted Transaction Stream Service",
+                  link: { type: "doc", id: "indexer/txn-stream/labs-hosted" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                     "indexer/txn-stream/labs-hosted-jp",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Self-Hosted Transaction Stream Service",
+                  link: { type: "doc", id: "indexer/txn-stream/self-hosted" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                      "indexer/txn-stream/self-hosted-jp",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Running Locally",
+                  link: { type: "doc", id: "indexer/txn-stream/local-development" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                      "indexer/txn-stream/local-development-jp",
+                  ],
+                },
               ],
             },
             {
@@ -317,15 +412,55 @@ const sidebars: SidebarsConfig = {
               collapsible: true,
               collapsed: true,
               items: [
-                "indexer/legacy/indexer-fullnode",
-                "indexer/legacy/custom-data-model",
-                "indexer/legacy/migration",
+                "indexer/legacy/index-jp",
+                {
+                  type: "category",
+                  label: "Run an Indexer Fullnode",
+                  link: { type: "doc", id: "indexer/legacy/indexer-fullnode" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                      "indexer/legacy/indexer-fullnode-jp",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Custom Data Model",
+                  link: { type: "doc", id: "indexer/legacy/custom-data-model" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                     "indexer/legacy/custom-data-model-jp",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Migrate to Transaction Stream Service",
+                  link: { type: "doc", id: "indexer/legacy/migration" },
+                  collapsible: true,
+                  collapsed: true,
+                  items: [
+                     "indexer/legacy/migration-jp",
+                  ],
+                },
               ],
             },
           ],
         },
       ],
     },
+
+                // {
+                //   type: "category",
+                //   label: "",
+                //   link: { type: "doc", id: "" },
+                //   collapsible: true,
+                //   collapsed: true,
+                //   items: [
+
+                //   ],
+                // },
+
     {
       type: "category",
       label: "Aptos SDKs",

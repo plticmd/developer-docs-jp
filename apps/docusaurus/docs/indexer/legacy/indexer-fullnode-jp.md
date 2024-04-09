@@ -1,6 +1,6 @@
 ---
-title: "Run an Indexer Fullnode"
-slug: "indexer-legacy-indexer-fullnode.md"
+title: "インデクサーフルノードを実行する(Japanese)"
+slug: "indexer-legacy-indexer-fullnode-jp.md"
 ---
 
 :::warning Legacy Indexer

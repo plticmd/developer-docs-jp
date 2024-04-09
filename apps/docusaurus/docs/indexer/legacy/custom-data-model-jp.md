@@ -1,6 +1,6 @@
 ---
-title: "Custom Data Model"
-slug: "indexer-legacy-custom-data-model"
+title: "カスタムデータモデル(in Japanese)"
+slug: "indexer-legacy-custom-data-model-jp"
 ---
 
 :::warning Legacy Indexer
