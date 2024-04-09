@@ -1,5 +1,6 @@
 ---
 title: "Custom Processors"
+slug: "indexer-custom-processors-index"
 ---
 
 import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';

@@ -1,5 +1,6 @@
 ---
 title: "Labs-Hosted Indexer API"
+slug: "indexer-api-labs-hosted"
 ---
 
 import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';

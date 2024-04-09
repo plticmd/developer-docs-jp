@@ -1,5 +1,6 @@
 ---
 title: "Labs-Hosted Transaction Stream Service"
+slug: "indexer-txn-stream-labs-hosted"
 ---
 
 import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';

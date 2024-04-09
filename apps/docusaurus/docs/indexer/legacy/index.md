@@ -1,5 +1,6 @@
 ---
 title: "Legacy Indexer"
+slug: "indexer-legacy-index"
 ---
 
 # Legacy Indexer

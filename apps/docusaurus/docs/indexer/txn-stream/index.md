@@ -1,5 +1,6 @@
 ---
 title: "Transaction Stream Service"
+slug: "indexer-txn-stream-index"
 ---
 
 import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';

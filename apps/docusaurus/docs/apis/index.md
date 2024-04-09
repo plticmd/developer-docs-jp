@@ -1,5 +1,6 @@
 ---
 title: "Aptos APIs"
+slug: "apts-index"
 ---
 
 The Aptos Blockchain network can be accessed by several APIs, depending on your use-case.

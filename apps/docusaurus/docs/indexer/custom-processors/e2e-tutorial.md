@@ -1,5 +1,6 @@
 ---
 title: "End-to-End Tutorial"
+slug: "indexer-custom-processors-e2e-tutorial"
 ---
 
 # Creating a Custom Indexer Processor

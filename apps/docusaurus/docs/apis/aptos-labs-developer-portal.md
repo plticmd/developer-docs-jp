@@ -1,5 +1,6 @@
 ---
 title: "Aptos Labs Developer Portal"
+slug: "apis-aptos-labs-developer-portal"
 ---
 
 import BetaNotice from '../../src/components/\_dev_portal_beta_notice.mdx';

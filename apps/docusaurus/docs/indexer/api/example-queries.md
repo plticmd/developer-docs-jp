@@ -1,5 +1,6 @@
 ---
 title: "Example Queries"
+slug: "indexer-api-example-queries"
 ---
 
 # Example Indexer API Queries
