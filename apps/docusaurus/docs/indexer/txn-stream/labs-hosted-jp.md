@@ -3,19 +3,21 @@ title: "ラボがホストするトランザクション ストリームサー�
 slug: "indexer-txn-stream-labs-hosted-jp"
 ---
 
-import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';
+# ラボがホストするトランザクションストリームサービス
+
+import BetaNotice from '../../../src/components/\_indexer_beta_notice_jp.mdx';
 
 <BetaNotice />
 
-If you are running your own instance of the [Indexer API](/indexer/api), or a [custom processor](/indexer/custom-processors), you must have access to an instance of the Transaction Stream Service. This page contains information about how to use the Labs-Hosted Transaction Stream Service.
+[インデクサーAPI](/indexer/api)のインスタンス(自前の)または[カスタムプロセッサー](/indexer/custom-processors)を実行している場合は、トランザクションストリームサービスのインスタンスにアクセスする必要があります。このページは、Labs-Hostedトランザクションストリームサービスの使用方法の情報を含んでいます。
 
-## Endpoints
+## エンドポイント
 
-All endpoints are in GCP us-central1 unless otherwise specified.
+特に指定がない限り、すべてのエンドポイントはGCP us-central1にあります。
 
-- **Mainnet:** grpc.mainnet.aptoslabs.com:443
-- **Testnet:** grpc.testnet.aptoslabs.com:443
-- **Devnet:** grpc.devnet.aptoslabs.com:443
+- **メインネット:** grpc.mainnet.aptoslabs.com:443
+- **テストネット:** grpc.testnet.aptoslabs.com:443
+- **開発ネット:** grpc.devnet.aptoslabs.com:443
 
 <!--
 ## Rate limits
@@ -26,21 +28,21 @@ The following rate limit applies for the Aptos Labs hosted Transaction Stream Se
 If you need a higher rate limit, consider running the Transaction Stream Service yourself. See the guide to self-hosting [here](./self-hosted).
 -->
 
-## Authorization via API Key
+## APIキーで認証する
 
-In order to use the Labs-Hosted Transaction Stream Service you must have an API key. To get an API key, do the following:
+Labs-Hostedトランザクションストリームサービスを使用するには、APIキーが必要です。APIキーを取得するには、以下の手順を実行します。
 
-1. Go to https://developers.aptoslabs.com.
-2. Sign in and select "API Keys" in the left sidebar.
-3. Create a new key. You will see the token value in the first table.
+1. https://developers.aptoslabs.com へ移動します。
+2. サインインし、左側のサイドバーで「APIキー」を選択します。
+3. 新しいキーを作成します。最初の表にトークン値が表示されます。
 
-You can provide the API key by setting the `Authorization` HTTP header ([MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization)). For example, with curl:
+`Authorization`HTTPヘッダー([MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization))を設定することでAPIキーを提供できます。例えば、carlの場合は...
 
 ```
 curl -H 'Authorization: Bearer aptoslabs_yj4donpaKy_Q6RBP4cdBmjA8T51hto1GcVX5ZS9S65dx'
 ```
 
-For more comprehensive information about how to use the Transaction Stream Service, see the docs for the downstream systems:
+トランザクションストリームサービスの使用方法に関するより包括的な情報については、ダウンストリームシステムのドキュメントを御覧下さい。
 
-- [Indexer API](/indexer/api/self-hosted)
-- [Custom Processors](/indexer/custom-processors)
+- [インデクサーAPI](/indexer/api/self-hosted)
+- [カスタムプロセッサー](/indexer/custom-processors)

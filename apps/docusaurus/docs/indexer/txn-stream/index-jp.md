@@ -3,8 +3,9 @@ title: "トランザクションストリームサービス(Japanese)"
 slug: "indexer-txn-stream-index-jp"
 ---
 
-import BetaNotice from '../../../src/components/\_indexer_beta_notice.mdx';
+# トランザクションストリームサービス
+import BetaNotice from '../../../src/components/\_indexer_beta_notice_jp.mdx';
 
 <BetaNotice />
 
-The Transaction Stream Service is a service that listens to the Aptos blockchain and emits transactions as they are processed. These docs explain how this system works, how to use the Labs-Hosted instance of the service, and how to deploy it yourself.
+トランザクションストリームサービスは、Aptosブロックチェーンに注目し、ブロックチェーン処理中にトランザクションを発行するサービスです。これらのドキュメントでは、このシステムがどのように機能するか、Labs-Hostedインスタンスの使用方法、およびそれを自分でデプロイする方法について解説します。

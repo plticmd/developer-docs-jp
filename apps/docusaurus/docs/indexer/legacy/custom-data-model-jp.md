@@ -2,7 +2,7 @@
 title: "カスタムデータモデル(in Japanese)"
 slug: "indexer-legacy-custom-data-model-jp"
 ---
-
+# カスタムデータモデル
 :::warning Legacy Indexer
 This is documentation for the legacy indexer. To learn how to write a custom processor with the latest indexer stack, see [Custom Processors](/indexer/custom-processors).
 :::

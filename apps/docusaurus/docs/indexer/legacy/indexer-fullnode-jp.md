@@ -2,71 +2,70 @@
 title: "インデクサーフルノードを実行する(Japanese)"
 slug: "indexer-legacy-indexer-fullnode-jp.md"
 ---
-
-:::warning Legacy Indexer
-This is documentation for the legacy indexer. To learn how to run the underlying infrastructure for the latest indexer stack, see [Transaction Stream Service](/indexer/txn-stream).
+# インデクサーフルノードを実行する
+:::warning 従来のインデクサー
+これは従来のインデクサーに関するドキュメントです。最新のインデクサースタックの基盤となるインフラストラクチャを実行する方法については [トランザクションストリームサービス](/indexer/txn-stream)を御覧下さい。
 :::
 
-# Run an Aptos Indexer
+## Aptosインデクサーを実行する
 
-:::danger On macOS with Apple Silicon only
-The below installation steps are verified only on macOS with Apple Silicon. They might require minor tweaking when running on other builds.
+:::danger APPLEシリコン搭載のMacOSのみ
+以下のインストール手順は、Appleシリコン搭載のMacOSでのみ検証されています。それ以外で実行する場合は、若干の調整が必要な場合があります。
 :::
 
-## Summary
+## 概要
 
-To run an indexer fullnode, these are the steps in summary:
+インデクサーのフルノードを実行する手順は、以下の要約を御覧下さい。
 
-1. Make sure that you have all the required tools and packages described below in this document.
-1. Follow the instructions to [set up a public fullnode](/nodes/full-node/verify-pfn.md) but do not start the fullnode yet.
-1. Edit the `fullnode.yaml` as described below in this document.
-1. Run the indexer fullnode per the instructions below.
+1. 以下で解説する必要なツールとパッケージが全て揃っていることを確認してください。
+2. 指示に従い[パブリックフルノードを設定](/nodes/full-node/verify-pfn.md)しますが、まだフルノードを起動しないで下さい。
+3. 以下で解説する様に`fullnode.yaml`を編集します。
+4. 以下の手順に従い、インデクサーのフルノードを実行します。
 
-## Prerequisites
 
-Install the packages below. Note, you may have already installed many of these while [preparing your development environment](/guides/building-from-source). You can confirm by running `which command-name` and ensuring the package appears in the output (although `libpq` will not be returned even when installed).
+## 前提条件
 
-> Important: If you are on macOS, you will need to [install Docker following the official guidance](https://docs.docker.com/desktop/install/mac-install/) rather than `brew`.
+以下のパッケージをインストールします。注意：[開発環境の準備](/guides/building-from-source)の際、これらの多くがすでにインストールされている可能性があります。`which command-name`を実行し、出力にパッケージが表示されることで確認できます(ただし、`libpqx`はインストールされても返されません)。
 
-For an Aptos indexer fullnode, install these packages:
+> 重要: MacOSを使用している場合は、`brew`ではなく、 [公式のガイダンスに従ってDockerをインストール](https://docs.docker.com/desktop/install/mac-install/)する必要があります。
 
-- [`brew`](https://brew.sh/) - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` Run the commands emitted in the output to add the command to your path and install any dependencies
-- [`cargo` Rust package manager](https://www.rust-lang.org/tools/install) - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+Aptosインデクサーのフルノードの場合は、以下のパッケージをインストールします。
+
+- [`brew`](https://brew.sh/) - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` アウトプットに出力されたコマンドを実行して、コマンドをパスに追加し、依存関係をインストールします。
+- [`cargo`Rustパッケージマネージャー](https://www.rust-lang.org/tools/install) - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - [`docker`](https://docs.docker.com/get-docker/) - `brew install docker`
-- [libpq Postgres C API library containing the `pg_ctl` command](https://formulae.brew.sh/formula/libpq) - `brew install libpq`
-  Make sure to perform all export commands after the installation.
-- [`postgres` PostgreSQL server](https://www.postgresql.org/) - `brew install postgresql`
+- [pg_ctllibpqコマンドを含むlibpq Postgres C APIライブラリ](https://formulae.brew.sh/formula/libpq) - `brew install libpq`インストール後、全てのエクスポートコマンドを実行してください。
+- [`postgres` PostgreSQLサーバー](https://www.postgresql.org/) - `brew install postgresql`
 - [`diesel`](https://diesel.rs/) - `brew install diesel`
 
-## Set up the database
+## データベースを設定する
 
-1. Start the PostgreSQL server:
+1. PostgreSQL サーバーを起動します。:
    `brew services start postgresql`
-1. Ensure you can run `psql postgres` and then exit the prompt by entering: `\q`
-1. Create a PostgreSQL user `postgres` with the `createuser` command (find it with `which`):
+2. `psql postgres`が実行できることを確認し:`\q`を入力してプロンプトを終了します。
+3. `createuser`コマンドでPostgreSQLユーザー `postgres`を作成します。(コマンドは`which`(以下)で見つかります)。:
    ```bash
    /path/to/createuser -s postgres
    ```
-1. Clone `aptos-core` repository if you have not already:
+4. まだクローンしていない場合は`aptos-core`リポジトリのクローンを作成します。
    ```bash
    git clone https://github.com/aptos-labs/aptos-core.git
    ```
-1. Navigate (or `cd`) into `aptos-core/crates/indexer` directory.
-1. Create the database schema:
+5. `aptos-core/crates/indexer`ディレクトリに移動 (`cd`)します。
+6. データベーススキーマを作成します。
    ```bash
    diesel migration run --database-url postgresql://localhost/postgres
    ```
-   This will create a database schema with the subdirectory `migrations` located in this `aptos-core/crates/indexer` directory. If for some reason this database is already in use, try a different database. For example: `DATABASE_URL=postgres://postgres@localhost:5432/indexer_v2 diesel database reset`
+   これにより、この`aptos-core/crates/indexer`ディレクトリ内に`migrations`サブディレクトリを含むデータベーススキーマが作成されます。何らかの理由でこのデータベースがすでに使用されている場合は、別のデータベースを試してください。例えば：`DATABASE_URL=postgres://postgres@localhost:5432/indexer_v2 diesel database reset`
 
-## Start the fullnode indexer
+## フルノードインデクサーを開始する
 
-1. Follow the instructions to set up a [public fullnode](/nodes/full-node/verify-pfn.md) and prepare the setup, but **do not** yet start the indexer (with `cargo run` or `docker run`).
-1. Pull the latest indexer Docker image with:
+1. 指示に従い[パブリックフルノード](/nodes/full-node/verify-pfn.md)を設定し、設定の準備をしますが、インデクサーはまだ**開始しないで下さい**(`cargo run`か`docker run`コマンドで)。
+2. 以下を使用して、最新のインデクサーDockerイメージをプルします。:
    ```bash
    docker pull aptoslabs/validator:nightly_indexer
    ```
-1. Edit the `./fullnode.yaml` and add the following configuration:
-
+3. `./fullnode.yaml`を編集して、以下の構成を追加します。:
    ```yaml
    storage:
      enable_indexer: true
@@ -83,13 +82,14 @@ For an Aptos indexer fullnode, install these packages:
      emit_every: 500
    ```
 
-:::tip Bootstrap the fullnode
-Instead of syncing your indexer fullnode from genesis, which may take a long period of time, you can choose to bootstrap your fullnode using backup data before starting it. To do so, follow the instructions to [restore from a backup](/nodes/full-node/aptos-db-restore.md).
+:::tip フルノードをブートストラップする
+インデクサーのフルノードをGenesisから同期する(これには長い時間がかかる場合があります)かわりに、フルノードを開始する前にバックアップデータを使用してフルノードをブートストラップすることを選択できます。これを行うには[バックアップから復元する](/nodes/full-node/aptos-db-restore.md)手順に従ってください。
 
-Note: indexers cannot be bootstrapped using [a snapshot](/nodes/full-node/bootstrap-fullnode.md) or [fast sync](../../guides/state-sync.md#fast-syncing).
+注: インデクサーは[スナップショット](/nodes/full-node/bootstrap-fullnode.md)または[高速同期](../../guides/state-sync.md#fast-syncing)を使用してブートストラップすることはできません。
 :::
 
-1. Run the indexer fullnode with either `cargo run` or `docker run` depending upon your setup. Remember to supply the arguments you need for your specific node:
+1. `cargo run`または`docker run`のいずれかを使用してインデクサーのフルノードを実行します。あなたの特有のノードで必要な引数を必ず指定して下さい。:
+
    ```bash
    docker run -p 8080:8080 \
      -p 9101:9101 -p 6180:6180 \
@@ -98,28 +98,25 @@ Note: indexers cannot be bootstrapped using [a snapshot](/nodes/full-node/bootst
      --name=aptos-fullnode aptoslabs/validator:nightly_indexer aptos-node \
      -f /opt/aptos/etc/fullnode.yaml
    ```
-   or:
+   または、
    ```bash
    cargo run -p aptos-node --features "indexer" --release -- -f ./fullnode.yaml
    ```
 
-## Restart the indexer
+## インデクサーを再起動する
 
-To restart the PostgreSQL server:
+PostgreSQLサーバーを再起動するには、
 
-1. [shut down the server](https://www.postgresql.org/docs/8.1/postmaster-shutdown.html) by searching for the `postmaster` process and killing it:
-
+1. `postmaster`プロセスを検索して強制終了することで[サーバーをシャットダウンします](https://www.postgresql.org/docs/8.1/postmaster-shutdown.html):
    ```bash
    ps -ef | grep -i postmaster
    ```
-
-1. Copy the process ID (PID) for the process and pass it to the following command to shut it down:
-
+2. プロセスのプロセスID(PID)をコピーし、以下のコマンドに渡してシャットダウンします。:
    ```bash
    kill -INT PID
    ```
+1. 以下のコマンドを使用してPostgreSQLサーバーを再起動します。:
 
-1. Restart the PostgreSQL server with:
    ```bash
    brew services restart postgresql@14
    ```
