@@ -1,6 +1,6 @@
 ---
 title: "フルノードREST API (in Japanese)" 
-slug: "api-fullnode-rest-api-jp"
+slug: "apis-fullnode-rest-api-jp"
 ---
 
 # AptosフルノードREST APIを使う

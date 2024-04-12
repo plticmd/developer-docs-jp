@@ -1,6 +1,6 @@
 ---
 title: "アプトスAPI (in Japanese)"
-slug: "apts-index-jp"
+slug: "apis-index-jp"
 ---
 # Aptos API
 ユースケースに応じて、いくつかのAPIからAptosブロックチェーンネットワークにアクセスできます。

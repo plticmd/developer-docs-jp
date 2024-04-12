@@ -112,4 +112,4 @@ docker run -it --network host --mount type=bind,source=/tmp/config.yaml,target=/
 
 このコマンドは、コンテナをホストネットワークにバインド(結合)し、ホストからコンテナに構成ファイルをマウントします。この特定の呼び出しでは、ホスト内の構成ファイルが`/tmp/config.yaml`にあることを前提としています。
 
-こちらのDockerHubのイメージを御覧下さい: https://hub.docker.com/r/aptoslabs/indexer-processor-rust/tags。
+こちらのDockerHubのイメージを御覧下さい: https://hub.docker.com/r/aptoslabs/indexer-processor-rust/tags
