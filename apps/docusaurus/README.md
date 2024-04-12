@@ -118,3 +118,7 @@ Once that is done, you can generate the map with this command:
 ```
 pnpm contributors
 ```
+
+
+# Localise
+https://docusaurus.io/docs/i18n/git
