@@ -2,14 +2,15 @@
 title: "トランザクション ストリーム サービスへの移行(Japanese)"
 slug: "indexer-legacy-migration-jp"
 ---
+# トランザクションストリームサービスへの移行
 
-This guide contains information on how to migrate to using the Transaction Stream Service if you are currently running a legacy indexer.
+現在レガシーインデクサーを実行を実行している場合、トランザクションストリームサービスの使用へ移行する方法をガイドします。
 
-The old indexer stack requires running an archival fullnode with additional threads to process the transactions which is difficult and expensive to maintain. Adding more custom logic either requires a bulkier machine, or running several fullnodes that scale linearly.
+古いインデクサースタックでは、トランザクションを処理するために追加のスレッドを備えたアーカイブフルノードを実行する必要がありますが、これは維持が難しくコストがかかります。さらにカスタム ロジックを追加するには、より大きなマシンが必要になるか、線形に拡張する複数のフルノードを実行する必要があります。
 
-This new way of indexing uses the [Transaction Stream Service](https://aptos.dev/indexer/txn-stream/). You can either use the [Labs-Hosted Transaction Stream Service](https://aptos.dev/indexer/txn-stream/labs-hosted/) or [run your own instance of Transaction Stream Service](https://aptos.dev/indexer/txn-stream/self-hosted).
+この新しいインデックス作成方法では[トランザクションストリームサービス](https://aptos.dev/indexer/txn-stream/)を使用します。[ラボがホストするトランザクションストリームサービス](https://aptos.dev/indexer/txn-stream/labs-hosted/)を使用出来、[トランザクションストリームサービスの独自のインスタンスを実行 ](https://aptos.dev/indexer/txn-stream/self-hosted)することもできます。
 
-## 1. Clone the repo
+## 1. リポジトリを複製する
 
 ```
 # SSH
@@ -19,16 +20,17 @@ git clone git@github.com:aptos-labs/aptos-indexer-processors.git
 git clone https://github.com/aptos-labs/aptos-indexer-processors.git
 ```
 
-Navigate to the directory for the service:
+サービスのディレクトリに移動します。:
 
 ```
 cd aptos-indexer-processors
 cd rust/processor
 ```
 
-## 2. Migrate processors to Transaction Stream Service
+## 2. プロセッサをトランザクションストリームサービスへ移行する
 
-For each processor you're migrating, you'll need to create a config file using the template below. You can find more information about each field of the config file [here](https://aptos.dev/indexer/api/self-hosted/#configuration).
+移行するプロセッサごとに、以下のテンプレートを使用して構成ファイルを作成する必要があります。構成ファイルの各フィールドの情報については[こちら](https://aptos.dev/indexer/api/self-hosted/#configuration).
+を御覧下さい。
 
 ```yaml
 health_check_port: 8084
@@ -44,27 +46,28 @@ server_config:
   ending_version: 0 # optional
 ```
 
-To connect the processor to the Transaction Stream Service, you need to set the URL for `indexer_grpc_data_service_address`. Choose one of the following options.
+プロセッサをトランザクションストリームサービスに接続するには、`indexer_grpc_data_service_address`の URLを設定する必要があります。次のオプションのいずれかを選択します。
 
-### Option A: Connect to Labs-Hosted Transaction Stream Service
+### オプションA:ラボがホストするトランザクションストリームサービスへ接続する
 
-The main benefit of using the Labs-Hosted Transaction Stream Service is that you no longer need to run an archival fullnode to get a stream of transactions. This service is rate-limited. Instructions to connect to Labs-Hosted Transaction Stream can be found [here](https://aptos.dev/indexer/txn-stream/labs-hosted).
+ラボがホストするトランザクションストリームサービスを使用する主な利点は、将来トランザクションのストリームを取得するためにアーカイブフルノードを実行する必要が無くなる事です。このサービスはレート制限されています。ラボがホストするトランザクションストリームサービスに接続する手順は[こちら](https://aptos.dev/indexer/txn-stream/labs-hosted)で見つかります。
 
-### Option B: Run a Self-Hosted Transaction Stream Service
+###  オプションB: セルフホスト型トランザクションストリームサービスを実行する
 
-If you choose to, you can run a self-hosted instance of the Transaction Stream Service and connect your processors to it. Instructions to run a Self-Hosted Transaction Stream can be found [here](https://aptos.dev/indexer/txn-stream/self-hosted).
+必要なら、トランザクションストリームサービスの自己ホスト型インスタンスを実行し、それにプロセッサを接続できます。セルフホスト型トランザクションストリームを実行する手順は[こちら](https://aptos.dev/indexer/txn-stream/self-hosted)で見つかります。
 
-## 3. (Optional) Migrate custom processors to Transaction Stream Service
+## 3. (オプション)カスタムプロセッサをトランザクションストリームサービスへ移行する
 
-If you have custom processors written with the old indexer, we highly recommend starting from scratch with a new database. Using a new database ensures that all your custom database migrations will be applied during this migration.
+古いインデクサーで作成されたカスタムプロセッサがある場合は、新しいデータベースを最初から作成することを強くお勧めします。
+新しいデータベースを使用すると、この移行中にすべてのカスタム データベース移行が確実に適用されます。
 
-### a. Migrate custom table schemas
+### a. カスタムテーブルスキーマを移行する
 
-Migrate your custom schemas by copying over each of your custom migrations to the [`migrations`](https://github.com/aptos-labs/aptos-indexer-processors/tree/main/rust/processor/migrations) folder.
+カスタムスキーマを移行するには、各カスタム移行を[`migrations`](https://github.com/aptos-labs/aptos-indexer-processors/tree/main/rust/processor/migrations)フォルダーにコピーします。
 
-### b. Migrate custom processors code
+### b. カスタムプロセッサーコードを移行する
 
-Migrate the code by copying over your custom processors to the [`processors`](https://github.com/aptos-labs/aptos-indexer-processors/tree/main/rust/processor) folder and any relevant custom models to the [`models`](https://github.com/aptos-labs/aptos-indexer-processors/tree/main/rust/processor/src/models) folder. Integrate the custom processors with the rest of the code by adding them to the following Rust code files.
+カスタム プロセッサを[`processors`](https://github.com/aptos-labs/aptos-indexer-processors/tree/main/rust/processor)フォルダーにコピーし、関連するカスタムモデルを[`models`](https://github.com/aptos-labs/aptos-indexer-processors/tree/main/rust/processor/src/models)フォルダーにコピーして、コードを移行します。カスタムプロセッサを以下のRustコードファイルに追加して、残りのコードと統合します。
 
 [`mod.rs`](https://github.com/aptos-labs/aptos-indexer-processors/blob/main/rust/processor/src/processors/mod.rs)
 
@@ -90,36 +93,37 @@ Processor::CoinProcessor => {
 },
 ```
 
-## 4. Backfill Postgres database with Diesel
+## 4. DieselでPostgresデータベーを埋め戻す
 
-Even though the new processors have the same Postgres schemas as the old ones, we recommend you do a complete backfill (ideally writing to a new DB altogether) because some fields are a bit different as a result of the protobuf conversion.
+新しいプロセッサは古いプロセッサと同じPostgresスキーマを持っていますが、完全なバックフィルを行うことをお勧めします。(理想的には新しいDBに全部書き込む)プロトコルバッファーの変換の結果として一部のフィールドが少し異なるため。 
 
-These instructions assume you are familiar with using [Diesel migrations](https://docs.rs/diesel_migrations/latest/diesel_migrations/). Run the full database migration with the following command:
+これらの手順は[Diesel移行](https://docs.rs/diesel_migrations/latest/diesel_migrations/)の使用に精通していることを前提としています。以下のコマンドを使用し、データベース全体の移行を実行します。
 
 ```
 DATABASE_URL=postgres://postgres@localhost:5432/postgres diesel migration run
 ```
 
-## 5. Run the migrated processors
+## 5. 移行されたプロセッサを実行する
 
-To run a single processor, use the following command:
+単一プロセッサを実行するには、以下のコマンドを使用します。
 
 ```
 cargo run --release -- -c config.yaml
 ```
 
-If you have multiple processors, you'll need to run a separate instance of the service for each of the processors.
+複数のプロセッサがある場合は、プロセッサごとにサービスの個別のインスタンスを実行する必要があります。
 
-If you'd like to run the processor as a Docker image, the instructions are listed [here](https://aptos.dev/indexer/api/self-hosted#run-with-docker).
+プロセッサをDockerイメージとして実行する場合、手順は[ここ](https://aptos.dev/indexer/api/self-hosted#run-with-docker)にリストされています。
 
-## FAQs
 
-### 1. Will the protobuf ever be updated, and what do I need to do at that time?
+## よくある質問
 
-The protobuf schema may be updated in the future. Backwards incompatible changes will be communicated in release notes.
+### 1. プロトコルバッファーは更新される予定ですか? 更新される場合、何をする必要がありますか？
 
-### 2. What if I already have custom logic written in the old indexer? Is it easy to migrate those?
+プロトコルバッファースキーマは将来更新される可能性があります。下位互換性のない変更については、リリースノートでお知らせします。
 
-Since the new indexer stack has the same Postgres schema as the old indexer stack, it should be easy to migrate your processors. We still highly recommend creating a new DB for this migration so that any custom DB migrations are applied.
+### 2. 古いインデクサーでカスタムロジックがすでに記述されている場合はどうすればよいですか?それらを移行するのは簡単ですか?
 
-Follow Step 3 in this guide to migrate your custom logic over to the new processors stack.
+新しいインデクサースタックには古いインデクサースタックと同じPostgresスキーマがあるため、プロセッサの移行は簡単です。カスタムDB移行が適用される様に、この移行用の新しいDBを作成することを強くお勧めします。
+
+このガイドのステップ 3 に従って、カスタムロジックを新しいプロセッサスタックに移行します。
