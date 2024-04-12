@@ -67,6 +67,10 @@ const themeConfig: Preset.ThemeConfig = {
       `,
     },
   ],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ja', 'fr'],
+  },
   navbar: {
     logo: {
       alt: "Aptos Labs Logo",
@@ -78,6 +82,10 @@ const themeConfig: Preset.ThemeConfig = {
         href: "https://github.com/aptos-labs/aptos-developer-discussions/discussions",
         label: "Aptos Dev Discussions",
         position: "right",
+      },
+      {
+        type: 'localeDropdown',
+        position: 'left',
       },
       {
         type: "dropdown",
