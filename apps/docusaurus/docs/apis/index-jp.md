@@ -27,7 +27,7 @@ slug: "apis-index-jp"
 
 [Aptosラボ](https://aptoslabs.com)は[Aptos財団](https://aptosfoundation.org/)を代表してこれらのAPIの配置を各[Aptosネットワーク](../nodes/networks.md)ごとに運営し、一般公開しています。
 
-現時点では、2セットのAptosラボのAPI配置があります。
+現時点では、2セットのAptosラボのAPIデプロイメントがあります。
 
 1. [匿名アクセスとIPベースのレート制限を備えたAPI](../nodes/networks.md)
 2. [[ベータ版]認証と、Aptosラボ開発者ポータルを介して開発者アカウントベースのレートを制限するAPI。](./aptos-labs-developer-portal.md)
